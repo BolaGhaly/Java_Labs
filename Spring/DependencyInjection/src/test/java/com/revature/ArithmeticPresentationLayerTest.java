@@ -1,6 +1,6 @@
-package com.revature;
+package com.example;
 
-import com.revature.ArithmeticPresentationLayer;
+import com.example.ArithmeticPresentationLayer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class ArithmeticPresentationLayerTest {
     @BeforeClass
     public static void setup() {
         // Create the Spring container
-        ApplicationContext context =  new AnnotationConfigApplicationContext(ArithmeticPresentationLayer.class);
+        ApplicationContext context = ew AnnotationConfigApplicationContext(ArithmeticPresentationLayer.class);
 
         // Retrieve the RoryApplication bean from the container
         app = context.getBean(ArithmeticPresentationLayer.class);
@@ -37,23 +37,21 @@ public class ArithmeticPresentationLayerTest {
         Assert.assertEquals("The result of 3.0 + -4.0 is -1.0", actual);
     }
 
-
-    @Test
     public void testMultiplyConvertToStringPositives() {
-        String actual = app.multiplyConvertToString(5,7);
-        Assert.assertEquals("The result of 5.0 * 7.0 is 35.0", actual);
+        String actual = app.multiplyConvertToString(5, 7);
+        Assert.assertEquals("The result of 5.0 * 7.0 i s 35.0", actual);
     }
 
     @Test
     public void testMultiplyConvertToStringNegatives() {
-        String actual = app.multiplyConvertToString(-5,-7);
-        Assert.assertEquals("The result of -5.0 * -7.0 is 35.0", actual);
+        String actual = app.multiplyConvertToString(-5, -7);
+        Assert.assertEquals("The result of -5.0 * -7.0  is 35.0", actual);
     }
 
     @Test
     public void testMultiplyConvertToStringPositiveNegative() {
-        String actual = app.multiplyConvertToString(5,-7);
-        Assert.assertEquals("The result of 5.0 * -7.0 is -35.0", actual);
+        String actual = app.multiplyConvertToString(5, -7);
+        Assert.assertEquals("The result of 5.0 * -7.0  is -35.0", actual);
     }
 
     @Test
@@ -69,4 +67,3 @@ public class ArithmeticPresentationLayerTest {
     }
 
 
-}

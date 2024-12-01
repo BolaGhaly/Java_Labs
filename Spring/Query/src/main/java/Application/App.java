@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 /**
- * Check out the PetRepository class in the Repository package for the code you should modify.
+ * Check out the PetRepository class in the Repository package for the code you
+ * should modify.
  * This main method is just for manually testing your code.
  */
 @SpringBootApplication
@@ -16,7 +17,7 @@ public class App {
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext applicationContext = SpringApplication.run(App.class);
         PetRepository petRepository = applicationContext.getBean(PetRepository.class);
-//        waiting for the spring logstream to finish setup prior to printing output
+        // waiting for the spring logstream to finish setup prior to printing output
         Pet p1 = petRepository.save(new Pet("Tommy", "Cat", 4));
         Pet p2 = petRepository.save(new Pet("Fido", "Dog", 5));
         Pet p3 = petRepository.save(new Pet("Tommy", "Dog", 6));

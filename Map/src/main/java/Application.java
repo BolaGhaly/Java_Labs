@@ -3,8 +3,10 @@ import java.util.Set;
 
 public class Application {
     /**
-     * This class contains a main method that allows you to manually test the Exception lab.
-     * No changes you make here affect the test case results. You must still run & pass the test cases.
+     * This class contains a main method that allows you to manually test the
+     * Exception lab.
+     * No changes you make here affect the test case results. You must still run &
+     * pass the test cases.
      * All implementation code should be written in the Lab class.
      *
      * The Lab.mustThrow method should throw an exception.
@@ -15,7 +17,8 @@ public class Application {
         Map<Integer, String> myMap = mapLab.createMap();
         System.out.println(myMap);
 
-        System.out.println("If we're able to add a key/value pair to the map, then we should be able to retrieve the value from the key");
+        System.out.println(
+                "If we're able to add a key/value pair to the map, then we should be able to retrieve the value from the key");
         mapLab.addKeyValuePair(myMap, 1, "apple");
         System.out.println("The value for key 1 should be 'apple':");
         String value1 = mapLab.getValueFromKey(myMap, 1);

@@ -2,13 +2,14 @@
 import java.util.Objects;
 
 /**
- * This class defines a Character object. Objects of this class represent one row of a database table. The table
+ * This class defines a Character object. Objects of this class represent one
+ * row of a database table. The table
  * should be defined as follows to be compatible with these objects:
  *
  * CREATE TABLE character (
- *      id SERIAL PRIMARY KEY,
- *      first_name VARCHAR(255),
- *      last_name VARCHAR(255)
+ * id SERIAL PRIMARY KEY,
+ * first_name VARCHAR(255),
+ * last_name VARCHAR(255)
  * );
  *
  */
@@ -57,10 +58,13 @@ public class Character {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Character character = (Character) o;
-        return Objects.equals(id, character.id) && Objects.equals(firstName, character.firstName) && Objects.equals(lastName, character.lastName);
+        return Objects.equals(id, character.id) && Objects.equals(firstName, character.firstName)
+                && Objects.equals(lastName, character.lastName);
     }
 
     @Override

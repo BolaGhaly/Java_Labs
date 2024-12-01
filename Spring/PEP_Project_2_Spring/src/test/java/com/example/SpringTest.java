@@ -103,7 +103,7 @@ public class SpringTest {
         Method[] repositoryMethods = repository.getClass().getMethods();
         Method saveMethod = null;
         Method findAllMethod = null;
-        String expectedUsername = "ted";
+        String expectedUsername = "John";
         String expectedPassword = "password123";
         Account testAccount = new Account(expectedUsername, expectedPassword);
         for (Method m : repositoryMethods) {
@@ -141,7 +141,7 @@ public class SpringTest {
         Method saveMethod = null;
         Method findAllMethod = null;
         int expectedPostedBy = 9999;
-        String expectedText = "ted test 1";
+        String expectedText = "John Test 1";
         long expectedTimePosted = 999999999999L;
         Message testMessage = new Message(expectedPostedBy, expectedText, expectedTimePosted);
         for (Method m : repositoryMethods) {

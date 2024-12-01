@@ -11,12 +11,12 @@ public class WordCountMapTest {
      * In the String "apple pear melon", all words occur exactly once.
      */
     @Test
-    public void wordCountTest1(){
+    public void wordCountTest1() {
         String input = "apple pear melon";
 
-        if(wcm.returnWordMap(input) == null){
+        if (wcm.returnWordMap(input) == null) {
             Assert.fail();
-        }else{
+        } else {
 
             Map<String, Integer> actual = wcm.returnWordMap(input);
             int a1 = actual.get("apple");
@@ -32,15 +32,16 @@ public class WordCountMapTest {
     }
 
     /**
-     * In the String "giraffe zebra giraffe", giraffe occurs twice and zebra occurs once.
+     * In the String "giraffe zebra giraffe", giraffe occurs twice and zebra occurs
+     * once.
      */
     @Test
-    public void wordCountTest2(){
+    public void wordCountTest2() {
         String input = "giraffe zebra giraffe";
 
-        if(wcm.returnWordMap(input) == null){
+        if (wcm.returnWordMap(input) == null) {
             Assert.fail();
-        }else{
+        } else {
             Map<String, Integer> actual = wcm.returnWordMap(input);
             int giraffeCount = actual.get("giraffe");
             int expectedGiraffeCount = 2;
@@ -50,15 +51,17 @@ public class WordCountMapTest {
             Assert.assertEquals(expectedZebraCount, zebraCount);
         }
     }
+
     /**
-     * In the String "apple pear melon apple pear apple", "apple" occurs 3 times, "pear" 2 times, "melon" 1 time.
+     * In the String "apple pear melon apple pear apple", "apple" occurs 3 times,
+     * "pear" 2 times, "melon" 1 time.
      */
     @Test
-    public void wordCountTest3(){
+    public void wordCountTest3() {
         String input = "apple pear melon apple pear apple";
-        if(wcm.returnWordMap(input) == null){
+        if (wcm.returnWordMap(input) == null) {
             Assert.fail();
-        }else{
+        } else {
             Map<String, Integer> actual = wcm.returnWordMap(input);
             int a1 = actual.get("apple");
             int e1 = 3;

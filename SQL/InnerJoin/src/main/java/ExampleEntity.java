@@ -51,10 +51,13 @@ public class ExampleEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ExampleEntity that = (ExampleEntity) o;
-        return Objects.equals(topic, that.topic) && Objects.equals(teacher, that.teacher) && Objects.equals(student, that.student) && Objects.equals(textbook, that.textbook);
+        return Objects.equals(topic, that.topic) && Objects.equals(teacher, that.teacher)
+                && Objects.equals(student, that.student) && Objects.equals(textbook, that.textbook);
     }
 
     @Override

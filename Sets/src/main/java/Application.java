@@ -2,8 +2,10 @@ import java.util.Set;
 
 public class Application {
     /**
-     * This class contains a main method that allows you to manually test the Sets lab.
-     * No changes you make here affect the test case results. You must still run & pass the test cases.
+     * This class contains a main method that allows you to manually test the Sets
+     * lab.
+     * No changes you make here affect the test case results. You must still run &
+     * pass the test cases.
      * All implementation code should be written in the Lab class.
      *
      * The Lab methods should perform Set operations.

@@ -14,10 +14,11 @@ public class InsertARecordTest {
     private InsertARecord insertARecord = new InsertARecord();
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @Before
-    public void beforeEach(){
+    public void beforeEach() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "CREATE TABLE song (Title varchar(100), Artist varchar(100));";
@@ -28,10 +29,11 @@ public class InsertARecordTest {
     }
 
     /**
-     * The after annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The after annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void afterEach(){
+    public void afterEach() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "DROP TABLE song;";
@@ -42,11 +44,14 @@ public class InsertARecordTest {
     }
 
     /**
-     * DML statements return the number of rows affected. The problem1 method will return true if the number of rows affected is greater than 0 and false if it's 0.
-     * If the test returns true then the insert statement was successful and if it is false then it was unsuccessful.
+     * DML statements return the number of rows affected. The problem1 method will
+     * return true if the number of rows affected is greater than 0 and false if
+     * it's 0.
+     * If the test returns true then the insert statement was successful and if it
+     * is false then it was unsuccessful.
      */
     @Test
-    public void addSongTest(){
+    public void addSongTest() {
         Assert.assertTrue(insertARecord.problem1());
     }
 }

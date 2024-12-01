@@ -20,15 +20,16 @@ public class PetRepositoryTest {
      * clear the entities prior to every test
      */
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         petRepository.deleteAll();
     }
 
     /**
-     * Retrieving all "Cat" species should retrieve Tommy and Whiskers, but not Fido.
+     * Retrieving all "Cat" species should retrieve Tommy and Whiskers, but not
+     * Fido.
      */
     @Test
-    public void lab1test(){
+    public void lab1test() {
         Pet p1 = petRepository.save(new Pet("Tommy", "Cat", 3));
         Pet p2 = petRepository.save(new Pet("Fido", "Dog", 3));
         Pet p3 = petRepository.save(new Pet("Whiskers", "Cat", 20));
@@ -39,10 +40,11 @@ public class PetRepositoryTest {
     }
 
     /**
-     * Retrieving all pets that are named "Fido" or 3 years old should return "Tommy" and "Fido".
+     * Retrieving all pets that are named "Fido" or 3 years old should return
+     * "Tommy" and "Fido".
      */
     @Test
-    public void lab2test(){
+    public void lab2test() {
         Pet p1 = petRepository.save(new Pet("Tommy", "Cat", 3));
         Pet p2 = petRepository.save(new Pet("Fido", "Dog", 3));
         Pet p3 = petRepository.save(new Pet("Whiskers", "Cat", 20));
@@ -53,10 +55,11 @@ public class PetRepositoryTest {
     }
 
     /**
-     * Retrieving the average age of all pets should return 9 within a range of .0001 (due to floating point math.)
+     * Retrieving the average age of all pets should return 9 within a range of
+     * .0001 (due to floating point math.)
      */
     @Test
-    public void lab3test(){
+    public void lab3test() {
         Pet p1 = petRepository.save(new Pet("Tommy", "Cat", 4));
         Pet p2 = petRepository.save(new Pet("Fido", "Dog", 3));
         Pet p3 = petRepository.save(new Pet("Whiskers", "Cat", 20));

@@ -15,10 +15,10 @@ public class TruncateTest {
     private Truncate truncate = new Truncate();
 
     @Test
-    public void problem2Test(){
+    public void problem2Test() {
         truncate.problem2();
 
-        //Write SQL statement here
+        // Write SQL statement here
         String sql = "SELECT * FROM song;";
         int counter = 0;
 
@@ -29,7 +29,7 @@ public class TruncateTest {
 
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 counter++;
             }
 
@@ -41,10 +41,11 @@ public class TruncateTest {
     }
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         try {
 
             Connection connection = ConnectionUtil.getConnection();
@@ -63,10 +64,11 @@ public class TruncateTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void cleanup(){
+    public void cleanup() {
 
         try {
 

@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 /**
- * This class will just run your API, allowing you to manually test via postman, curl, thunder client, etc.
+ * This class will just run your API, allowing you to manually test via postman,
+ * curl, thunder client, etc.
  * Check out 'SearchController' for your tasks.
  */
 @SpringBootApplication

@@ -8,39 +8,49 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 /**
- * The @Configuration class is where the beans of your Spring project will be defined.
+ * The @Configuration class is where the beans of your Spring project will be
+ * defined.
  */
 @Configuration
 public class Application {
     /**
-     * A bean's scope determines how the bean behaves when that bean is requested from the ApplicationContext - Spring
-     * could be instructed to either provide a newly-instantiated object or reuse an existing object. Below are the
+     * A bean's scope determines how the bean behaves when that bean is requested
+     * from the ApplicationContext - Spring
+     * could be instructed to either provide a newly-instantiated object or reuse an
+     * existing object. Below are the
      * Spring bean scopes:
      *
-     * Singleton - the default scope, any time a specific bean is requested, the existing object is reused
+     * Singleton - the default scope, any time a specific bean is requested, the
+     * existing object is reused
      * Prototype - any time a bean is requested a new object is instantiated
-     * Request - only used in web applications - a new object is instantiated once per web request
-     * Session - only used in web applications - a new object is instantiated once per web session
-     * Application - only used in web applications - a new object is instantiated once per web servlet
-     * Websocket - only used in web applications - a new object is instantiated once per websocket
+     * Request - only used in web applications - a new object is instantiated once
+     * per web request
+     * Session - only used in web applications - a new object is instantiated once
+     * per web session
+     * Application - only used in web applications - a new object is instantiated
+     * once per web servlet
+     * Websocket - only used in web applications - a new object is instantiated once
+     * per websocket
      */
 
-     /**
-     * The @Scope() annotation here is unnecessary as "singleton" is the default, but this example shows how the
+    /**
+     * The @Scope() annotation here is unnecessary as "singleton" is the default,
+     * but this example shows how the
      * scope can be set.
      */
     @Bean
     @Scope("singleton")
-    public ScopedBean sampleBean(){
+    public ScopedBean sampleBean() {
         return new ScopedBean();
     }
 
     /**
-     * TODO: correct the following code so that a new ScopedBean is instantiated every time the labBean is requested.
+     * TODO: correct the following code so that a new ScopedBean is instantiated
+     * every time the labBean is requested.
      */
     @Bean
     @Scope("prototype")
-    public ScopedBean labBean(){
+    public ScopedBean labBean() {
         return new ScopedBean();
     }
 
@@ -55,9 +65,10 @@ public class Application {
         System.out.println("sampleBean is singleton-scoped, so any sampleBean retrieved from the app context ");
         System.out.println("should be the same object. Let's test it with ==, are b1 and b2 the same object?");
         /*
-        remember that == performs a shallow comparison, and can only check if two objects are literally the same
-        object in memory. This came in useful here!
-        */
+         * remember that == performs a shallow comparison, and can only check if two
+         * objects are literally the same
+         * object in memory. This came in useful here!
+         */
         if (b1 == b2) {
             System.out.println("b1 and b2 are the same object.");
         } else {

@@ -15,17 +15,18 @@ public class FilterColumnsTest {
     FilterColumns filterColumns = new FilterColumns();
 
     /**
-     * This test compares the result of the problem1 method to the hardcoded values below which ensures that only the
+     * This test compares the result of the problem1 method to the hardcoded values
+     * below which ensures that only the
      * firstname column is retrieved.
      */
     @Test
-    public void problem1Test(){
-        //arrange
+    public void problem1Test() {
+        // arrange
         User user1 = new User(0, "Steve", null);
-        User user2 = new User(0,"Alexa", null);
-        User user3 = new User(0,"Steve",null);
+        User user2 = new User(0, "Alexa", null);
+        User user3 = new User(0, "Steve", null);
         User user4 = new User(0, "Brandon", null);
-        User user5 = new User(0,"Adam",null);
+        User user5 = new User(0, "Adam", null);
         List<User> expectedResult = new ArrayList<>();
         expectedResult.add(user1);
         expectedResult.add(user2);
@@ -33,24 +34,25 @@ public class FilterColumnsTest {
         expectedResult.add(user4);
         expectedResult.add(user5);
 
-        //act
+        // act
         List<User> actualResult = filterColumns.problem1();
 
-        //assert
+        // assert
         Assert.assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
 
         try {
 
             Connection connection = ConnectionUtil.getConnection();
 
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE site_user (id SERIAL PRIMARY KEY, firstname varchar(100), lastname varchar(100));";
             String sql2 = "INSERT INTO site_user (firstname, lastname) VALUES ('Steve', 'Garcia');";
             String sql3 = "INSERT INTO site_user (firstname, lastname) VALUES ('Alexa', 'Smith');";
@@ -69,10 +71,11 @@ public class FilterColumnsTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void cleanup(){
+    public void cleanup() {
 
         try {
 

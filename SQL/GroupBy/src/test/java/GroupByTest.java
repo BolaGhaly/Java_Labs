@@ -25,12 +25,10 @@ public class GroupByTest {
 
     }
 
-
     @BeforeClass
     public static void getConnection() {
         conn = ConnectionUtil.getConnection();
     }
-
 
     @Before
     public void setup() {
@@ -54,7 +52,7 @@ public class GroupByTest {
             PreparedStatement insertDataStatement = conn.prepareStatement(insertData);
             insertDataStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -67,7 +65,7 @@ public class GroupByTest {
             PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
             createTableStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -75,7 +73,7 @@ public class GroupByTest {
     public static void closeConnection() {
         try {
             conn.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
 
     }

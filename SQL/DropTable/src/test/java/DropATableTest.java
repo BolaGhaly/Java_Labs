@@ -13,10 +13,11 @@ public class DropATableTest {
     private DropATable dropATable = new DropATable();
 
     /**
-     * The before annotation runs before every test so that way we drop the tables to avoid conflicts in future tests
+     * The before annotation runs before every test so that way we drop the tables
+     * to avoid conflicts in future tests
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "CREATE TABLE song (Title varchar(100), Artist varchar(100));";
@@ -28,10 +29,11 @@ public class DropATableTest {
     }
 
     /**
-     * The after annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The after annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void afterEach(){
+    public void afterEach() {
 
         try {
             Connection connection = ConnectionUtil.getConnection();
@@ -39,15 +41,18 @@ public class DropATableTest {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
 
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+        }
     }
 
     /**
-     *  In programming we utilize try / catch constructs to catch when there are potential for errors / exceptions.
-     *  For this test, if I am able to insert a song into the songs table, then the songs table was never dropped and the test should fail.
+     * In programming we utilize try / catch constructs to catch when there are
+     * potential for errors / exceptions.
+     * For this test, if I am able to insert a song into the songs table, then the
+     * songs table was never dropped and the test should fail.
      */
     @Test
-    public void dropTableTest(){
+    public void dropTableTest() {
         try {
             dropATable.problem1();
             Connection connection = ConnectionUtil.getConnection();
@@ -56,6 +61,7 @@ public class DropATableTest {
             ps.executeUpdate();
             System.out.println("problem1: Table 'song' was not dropped.");
             Assert.fail();
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+        }
     }
 }

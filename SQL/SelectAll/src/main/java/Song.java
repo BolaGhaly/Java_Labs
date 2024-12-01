@@ -2,11 +2,12 @@
 import java.util.Objects;
 
 /**
- * This class is to represent one song record that is in the database table "songs"
+ * This class is to represent one song record that is in the database table
+ * "songs"
  */
 public class Song {
-   private String title;
-   private String artist;
+    private String title;
+    private String artist;
 
     public Song() {
     }
@@ -34,8 +35,10 @@ public class Song {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Song song = (Song) o;
         return Objects.equals(title, song.title) && Objects.equals(artist, song.artist);
     }

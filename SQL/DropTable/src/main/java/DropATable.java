@@ -17,15 +17,15 @@ import java.sql.Statement;
 public class DropATable {
 
     /**
-     *      Task: Drop the table "song"
-     *      song Table Diagram:
-     *      |      title        |        artist         |
-     *      ---------------------------------------------
-     *      |'Let it be'        |'Beatles'              |
-     *      |'Hotel California' |'Eagles'               |
-     *      |'Kashmir'          |'Led Zeppelin'         |
+     * Task: Drop the table "song"
+     * song Table Diagram:
+     * | title | artist |
+     * ---------------------------------------------
+     * |'Let it be' |'Beatles' |
+     * |'Hotel California' |'Eagles' |
+     * |'Kashmir' |'Led Zeppelin' |
      */
-    public void problem1(){
+    public void problem1() {
         String sql = FileUtil.parseSQLFile("problem1.sql");
 
         try {

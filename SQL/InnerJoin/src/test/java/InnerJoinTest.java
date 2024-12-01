@@ -19,7 +19,6 @@ public class InnerJoinTest {
         expected.add(new Pair<Integer, String>(3, "Samantha Bee"));
         expected.add(new Pair<Integer, String>(5, "Robert Riggle"));
 
-
         Set<Pair<Integer, String>> result = innerJoinActivity.problem1();
 
         Assert.assertEquals(expected, result);
@@ -30,7 +29,6 @@ public class InnerJoinTest {
     public static void beforeAll() {
         conn = ConnectionUtil.getConnection();
     }
-
 
     @Before
     public void beforeEach() {
@@ -51,7 +49,6 @@ public class InnerJoinTest {
             PreparedStatement insertFacultyData = conn.prepareStatement(insertFaculty);
             insertFacultyData.executeUpdate();
 
-
             String studentsTable = "CREATE TABLE student (" +
                     "id SERIAL PRIMARY KEY," +
                     "student_name VARCHAR(255)," +
@@ -70,7 +67,7 @@ public class InnerJoinTest {
             PreparedStatement insertStudentsData = conn.prepareStatement(insertStudents);
             insertStudentsData.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -84,7 +81,7 @@ public class InnerJoinTest {
             PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
             createTableStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -92,7 +89,7 @@ public class InnerJoinTest {
     public static void afterAll() {
         try {
             conn.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
 
     }

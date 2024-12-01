@@ -1,4 +1,4 @@
 package Lab.Exceptions;
 
-public class NegativeWeightException extends Exception{
+public class NegativeWeightException extends Exception {
 }

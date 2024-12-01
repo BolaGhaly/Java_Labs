@@ -6,15 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
-
 public class ProductEntityTest {
 
     /**
-     * This test will pass if the ApplicationContext successfully starts. This requires that the
+     * This test will pass if the ApplicationContext successfully starts. This
+     * requires that the
      * persistence Entities are correctly annotated.
      *
-     * The ProductRepository interface defines a JPA Repository for Product Entities. If Product is
-     * not properly annotated as an Entity, the repository bean cannot be created, so the ApplicationContext
+     * The ProductRepository interface defines a JPA Repository for Product
+     * Entities. If Product is
+     * not properly annotated as an Entity, the repository bean cannot be created,
+     * so the ApplicationContext
      * cannot be successfully started.
      */
     @Test

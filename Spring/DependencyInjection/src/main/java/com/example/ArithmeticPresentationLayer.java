@@ -1,7 +1,7 @@
-package com.revature;
-import com.revature.components.Adder;
-import com.revature.components.Multiplier;
-import com.revature.components.Squarer;
+package com.example;
+import com.example.components.Adder;
+import com.example.components.Multiplier;
+import com.example.components.Squarer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  *
  * TODO: Add the @Autowired annotation to achieve dependency injection in 3 different ways (constructor, setter, and field)
  */
-@ComponentScan(basePackages = "com.revature.components")
+@ComponentScan(basePackages = "com.example.components")
 @Component
 public class ArithmeticPresentationLayer {
     @Autowired

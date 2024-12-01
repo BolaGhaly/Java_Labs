@@ -27,18 +27,14 @@ public class OrderResultSetTest {
             expectedList.add(new Character(5, "Feyd-Rautha", "Harkonnen"));
             expectedList.add(new Character(2, "Vladimir", "Harkonnen"));
 
-
             List<Character> resultList = orderResultSetActivity.problem1();
 
             Assert.assertEquals(expectedList, resultList);
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("problem1: " + e.getMessage() + '\n');
             fail();
         }
     }
-
-
-
 
     @Before
     public void beforeEach() {
@@ -62,7 +58,7 @@ public class OrderResultSetTest {
             PreparedStatement insertDataStatement = conn.prepareStatement(insertData);
             insertDataStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -76,7 +72,7 @@ public class OrderResultSetTest {
             PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
             createTableStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

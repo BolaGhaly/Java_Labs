@@ -16,13 +16,14 @@ public class GetAllSongsTest {
     GetAllSongs getAllSongs = new GetAllSongs();
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         try {
             Connection connection = ConnectionUtil.getConnection();
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE song (Title varchar(100), Artist varchar(100));";
             String sql2 = "INSERT INTO song VALUES ('Let it be', 'Beatles');";
             String sql3 = "INSERT INTO song VALUES ('Hotel California', 'Eagles');";
@@ -34,10 +35,11 @@ public class GetAllSongsTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void cleanup(){
+    public void cleanup() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "DROP TABLE song;";
@@ -47,14 +49,15 @@ public class GetAllSongsTest {
         }
     }
 
-
     /**
      * In this test we have a hardcoded version of that same list in java.
-     * This test calls the method with the SQL syntax that you wrote and then compares it to the hardcoded list here, if they are the same then the test passes.
+     * This test calls the method with the SQL syntax that you wrote and then
+     * compares it to the hardcoded list here, if they are the same then the test
+     * passes.
      */
     @Test
-    public void getAllSongsTest(){
-        //arrange
+    public void getAllSongsTest() {
+        // arrange
         Song song1 = new Song("Let it be", "Beatles");
         Song song2 = new Song("Hotel California", "Eagles");
         Song song3 = new Song("Kashmir", "Led Zeppelin");
@@ -63,10 +66,10 @@ public class GetAllSongsTest {
         expectedResult.add(song2);
         expectedResult.add(song3);
 
-        //act
+        // act
         List<Song> actualResult = getAllSongs.problem1();
 
-        //assert
+        // assert
         Assert.assertEquals(expectedResult, actualResult);
     }
 }

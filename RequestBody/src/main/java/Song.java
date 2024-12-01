@@ -1,12 +1,10 @@
 
-
 import java.util.Objects;
 
 public class Song {
-    
+
     private String songName;
     private String artistName;
-
 
     public Song() {
     }
@@ -61,9 +59,9 @@ public class Song {
     @Override
     public String toString() {
         return "{" +
-            " songName='" + getSongName() + "'" +
-            ", artistName='" + getArtistName() + "'" +
-            "}";
+                " songName='" + getSongName() + "'" +
+                ", artistName='" + getArtistName() + "'" +
+                "}";
     }
 
 }

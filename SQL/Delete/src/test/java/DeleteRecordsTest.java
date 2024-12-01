@@ -16,13 +16,14 @@ public class DeleteRecordsTest {
     DeleteRecords deleteRecords = new DeleteRecords();
 
     /**
-     * In this test we are retrieving everything in the users table to ensure that Steve was successfully
+     * In this test we are retrieving everything in the users table to ensure that
+     * Steve was successfully
      * removed and comparing it to the hardcoded values below.
      */
     @Test
-    public void deleteTest(){
-        //arrange
-        User user2 = new User(2,"Alexa");
+    public void deleteTest() {
+        // arrange
+        User user2 = new User(2, "Alexa");
         User user3 = new User(4, "Brandon");
         User user4 = new User(5, "Adam");
         List<User> expectedResult = new ArrayList<>();
@@ -30,7 +31,7 @@ public class DeleteRecordsTest {
         expectedResult.add(user3);
         expectedResult.add(user4);
 
-        //act
+        // act
         deleteRecords.problem1();
 
         List<User> actualResult = new ArrayList<>();
@@ -44,7 +45,7 @@ public class DeleteRecordsTest {
 
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 actualResult.add(new User(rs.getInt(1), rs.getString(2)));
             }
 
@@ -52,20 +53,21 @@ public class DeleteRecordsTest {
             System.out.println("problem1: " + e.getMessage() + '\n');
         }
 
-        //assert
+        // assert
         Assert.assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeEach(){
+    public void beforeEach() {
 
         try {
 
             Connection connection = ConnectionUtil.getConnection();
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE site_user (id SERIAL PRIMARY KEY, firstname varchar(100));";
             String sql2 = "INSERT INTO site_user (firstname) VALUES ('Steve');";
             String sql3 = "INSERT INTO site_user (firstname) VALUES ('Alexa');";
@@ -81,10 +83,11 @@ public class DeleteRecordsTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void afterEach(){
+    public void afterEach() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "DROP TABLE user;";

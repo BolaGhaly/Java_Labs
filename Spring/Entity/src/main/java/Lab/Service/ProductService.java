@@ -16,32 +16,42 @@ import java.util.List;
 @Component
 public class ProductService {
     ProductRepository productRepository;
+
     @Autowired
-    public ProductService(ProductRepository productRepository){
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
     /**
-     * This method will retrieve all Product entities from the Product database table, the equivalent
+     * This method will retrieve all Product entities from the Product database
+     * table, the equivalent
      * of a "select * from product" statement.
+     * 
      * @return
      */
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
     /**
-     * This method will persist a product to the Product database table, the equivalent of a
+     * This method will persist a product to the Product database table, the
+     * equivalent of a
      * "insert into product" statement.
+     * 
      * @return
      */
-    public Product insertProduct(Product product){
+    public Product insertProduct(Product product) {
         return productRepository.save(product);
     }
+
     /**
-     * This method will delete a product from the Product database table, the equivalent of a
+     * This method will delete a product from the Product database table, the
+     * equivalent of a
      * "delete from product" statement.
+     * 
      * @return
      */
-    public void deleteProduct(Product product){
+    public void deleteProduct(Product product) {
         productRepository.delete(product);
     }
 }

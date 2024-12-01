@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@ExtendWith({MockitoExtension.class, SpringExtension.class})
+@ExtendWith({ MockitoExtension.class, SpringExtension.class })
 @WebMvcTest(SampleController.class)
 public class SampleControllerTest {
 

@@ -9,7 +9,7 @@ public class StringReverseTest {
      * The reverse of "abc" is "cba".
      */
     @Test
-    public void StringReverseTest1(){
+    public void StringReverseTest1() {
         String s = "abc";
         String target = "cba";
         Assert.assertEquals(target, sr.reverse(s));
@@ -19,7 +19,7 @@ public class StringReverseTest {
      * The reverse of "racecar" is "racecar".
      */
     @Test
-    public void StringReverseTest2(){
+    public void StringReverseTest2() {
         String s = "racecar";
         String target = "racecar";
         Assert.assertEquals(target, sr.reverse(s));
@@ -29,7 +29,7 @@ public class StringReverseTest {
      * The reverse of "f" is "f".
      */
     @Test
-    public void StringReverseTest3(){
+    public void StringReverseTest3() {
         String s = "f";
         String target = "f";
         Assert.assertEquals(target, sr.reverse(s));
@@ -39,7 +39,7 @@ public class StringReverseTest {
      * The reverse of "" is "".
      */
     @Test
-    public void StringReverseTest4(){
+    public void StringReverseTest4() {
         String s = "";
         String target = "";
         Assert.assertEquals(target, sr.reverse(s));
@@ -49,7 +49,7 @@ public class StringReverseTest {
      * The reverse of "pillow" is "wollip".
      */
     @Test
-    public void StringReverseTest5(){
+    public void StringReverseTest5() {
         String s = "pillow";
         String target = "wollip";
         Assert.assertEquals(target, sr.reverse(s));

@@ -10,7 +10,8 @@ import javax.persistence.Id;
 /**
  * JPA Entity intended to model a grocery store.
  *
- * For the sake of brevity, Lombok is also used to automatically generate boilerplate code.
+ * For the sake of brevity, Lombok is also used to automatically generate
+ * boilerplate code.
  */
 @Entity
 @ToString

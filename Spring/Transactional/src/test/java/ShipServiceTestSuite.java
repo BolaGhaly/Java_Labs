@@ -8,14 +8,14 @@ import java.lang.annotation.Annotation;
 public class ShipServiceTestSuite {
 
     @Test
-    public void testTransactionalAnnotationPresence(){
+    public void testTransactionalAnnotationPresence() {
         Class<ShipService> shipServiceClass = ShipService.class;
         boolean annotationFound = shipServiceClass.isAnnotationPresent(Transactional.class);
         Assertions.assertTrue(annotationFound);
     }
 
     @Test
-    public void testTransactionalRollbackForTonnageException(){
+    public void testTransactionalRollbackForTonnageException() {
         Class<ShipService> shipServiceClass = ShipService.class;
         Annotation transactionalAnnotation = shipServiceClass.getAnnotation(Transactional.class);
 

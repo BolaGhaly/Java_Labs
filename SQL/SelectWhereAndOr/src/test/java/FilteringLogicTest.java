@@ -14,8 +14,6 @@ public class FilteringLogicTest {
     private final FilteringLogicActivity filteringLogicActivity = new FilteringLogicActivity();
     private static Connection conn;
 
-
-
     @Test
     public void testActivityFindEmployeesAnd() {
         Set<Employee> expectedList = new HashSet<>();
@@ -76,7 +74,7 @@ public class FilteringLogicTest {
             PreparedStatement insertDataStatement = conn.prepareStatement(insertData);
             insertDataStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -90,7 +88,7 @@ public class FilteringLogicTest {
             PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
             createTableStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

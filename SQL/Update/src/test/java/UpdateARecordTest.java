@@ -16,16 +16,17 @@ public class UpdateARecordTest {
     UpdateARecord updateARecord = new UpdateARecord();
 
     /**
-     * In this test we are querying everything in the users table to ensure that Alexa was successfully updated to "Rush".
+     * In this test we are querying everything in the users table to ensure that
+     * Alexa was successfully updated to "Rush".
      */
     @Test
-    public void problem1Test(){
-        //arrange
-        User user1 = new User(1,"Steve","Garcia");
-        User user2 = new User(2,"Alexa","Rush");
-        User user3 = new User(3,"Steve","Jones");
-        User user4 = new User(4,"Brandon","Smith");
-        User user5 = new User(5,"Adam","Jones");
+    public void problem1Test() {
+        // arrange
+        User user1 = new User(1, "Steve", "Garcia");
+        User user2 = new User(2, "Alexa", "Rush");
+        User user3 = new User(3, "Steve", "Jones");
+        User user4 = new User(4, "Brandon", "Smith");
+        User user5 = new User(5, "Adam", "Jones");
         List<User> expectedResult = new ArrayList<>();
         expectedResult.add(user1);
         expectedResult.add(user2);
@@ -33,8 +34,7 @@ public class UpdateARecordTest {
         expectedResult.add(user4);
         expectedResult.add(user5);
 
-
-        //act
+        // act
         updateARecord.problem1();
 
         List<User> actualResult = new ArrayList<>();
@@ -48,7 +48,7 @@ public class UpdateARecordTest {
 
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 actualResult.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
 
@@ -56,21 +56,22 @@ public class UpdateARecordTest {
             System.out.println("problem1: " + e.getMessage() + '\n');
         }
 
-        //assert
+        // assert
         Assert.assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
 
         try {
 
             Connection connection = ConnectionUtil.getConnection();
 
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE site_user (id SERIAL PRIMARY KEY, firstname varchar(100), lastname varchar(100));";
             String sql2 = "INSERT INTO site_user (firstname, lastname) VALUES ('Steve', 'Garcia');";
             String sql3 = "INSERT INTO site_user (firstname, lastname) VALUES ('Alexa', 'Smith');";
@@ -89,10 +90,11 @@ public class UpdateARecordTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void cleanup(){
+    public void cleanup() {
 
         try {
 

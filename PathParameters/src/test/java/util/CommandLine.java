@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-public class CommandLine {
-    public static String executeCommandPrompt(String command){
-        ProcessBuilder processBuilder = new ProcessBuilder();
+    public static String executeCommandPrompt(String command) {
+        ProcessBuilder processBuilder = new ProcessBuilder(); 
         StringBuilder output = new StringBuilder();
 
         switch (System.getProperty("os.name")) {
@@ -20,8 +18,6 @@ public class CommandLine {
         }
 
 
-        try {
-
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(
@@ -33,15 +29,13 @@ public class CommandLine {
             }
 
             int exitVal = process.waitFor();
-            
 
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+
             e.printStackTrace();
         }
 
-
         return output.toString();
     }
-}
+
+        

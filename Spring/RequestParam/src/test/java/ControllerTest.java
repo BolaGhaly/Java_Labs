@@ -28,13 +28,13 @@ public class ControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string("50"));
     }
 
-
     @Test
     public void testGetSearchFormat2() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/cats").param("amount", "100"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("100"));
     }
+
     @Test
     public void testGetSearchFormatAndAmount1() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/cats").param("format", "gif").param("orderBy", "new"))
@@ -42,6 +42,7 @@ public class ControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0]").value("gif"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1]").value("new"));
     }
+
     @Test
     public void testGetSearchFormatAndAmount2() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/cats").param("format", "png").param("orderBy", "old"))

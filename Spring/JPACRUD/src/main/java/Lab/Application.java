@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 /**
- * The @SpringBootApplication annotation enables automatic configuration of a Spring App.
- * Check out the GroceryService for current JPACRUD implementation and StoreService classes for the code you need to
+ * The @SpringBootApplication annotation enables automatic configuration of a
+ * Spring App.
+ * Check out the GroceryService for current JPACRUD implementation and
+ * StoreService classes for the code you need to
  * change. There is no need to change anything in this class.
  */
 @SpringBootApplication
@@ -19,7 +21,7 @@ public class Application {
         ApplicationContext applicationContext = SpringApplication.run(Application.class);
         GroceryService groceryService = applicationContext.getBean(GroceryService.class);
         StoreService storeService = applicationContext.getBean(StoreService.class);
-        //Demonstrating the functionality of the JPARepository with the Grocery entity.
+        // Demonstrating the functionality of the JPARepository with the Grocery entity.
         System.out.println("First, let's create some groceries, persist them, and then retrieve all groceries.");
         Grocery g1 = groceryService.persistGrocery(new Grocery("banana"));
         Grocery g2 = groceryService.persistGrocery(new Grocery("apple"));
@@ -35,9 +37,9 @@ public class Application {
         System.out.println("Let's update grocery of id 1 to be 'melon.'");
         groceryService.updateGrocery(1L, new Grocery("melon"));
         System.out.println(groceryService.getGroceryById(1L));
-        //Testing out your Service class implementations with the Store entity.
+        // Testing out your Service class implementations with the Store entity.
         System.out.println("Creating some stores, persisting them, and retrieving all stores.");
-        Store s1 = storeService.persistStore(new Store("ted balashov's farmers market", "123 main street"));
+        Store s1 = storeService.persistStore(new Store("John's farmers market", "123 main street"));
         Store s2 = storeService.persistStore(new Store("super mart", "111 1st avenue"));
         System.out.println(storeService.getAllStores());
         System.out.println("Let's get a store of id 1.");
@@ -46,7 +48,7 @@ public class Application {
         storeService.deleteStore(2L);
         System.out.println(storeService.getAllStores());
         System.out.println("Finally, let's try updating a store and then getting all stores.");
-        storeService.updateStore(1L, new Store("ted balashov's corner market",  "123 main street"));
+        storeService.updateStore(1L, new Store("John's corner market", "123 main street"));
         System.out.println(storeService.getAllStores());
     }
 }

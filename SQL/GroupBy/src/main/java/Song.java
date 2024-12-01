@@ -57,10 +57,13 @@ public class Song {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Song song1 = (Song) o;
-        return Objects.equals(id, song1.id) && Objects.equals(artist, song1.artist) && Objects.equals(album, song1.album) && Objects.equals(song, song1.song);
+        return Objects.equals(id, song1.id) && Objects.equals(artist, song1.artist)
+                && Objects.equals(album, song1.album) && Objects.equals(song, song1.song);
     }
 
     @Override

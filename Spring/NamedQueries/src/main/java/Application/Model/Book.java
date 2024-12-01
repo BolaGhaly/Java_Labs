@@ -26,7 +26,8 @@ public class Book {
     private Timestamp dateAdded;
     private Timestamp lastDateWithdrawn;
 
-    public Book(long isbn, String title, String author, boolean available, int pages, Timestamp dateAdded, Timestamp lastDateWithdrawn) {
+    public Book(long isbn, String title, String author, boolean available, int pages, Timestamp dateAdded,
+            Timestamp lastDateWithdrawn) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;

@@ -16,17 +16,14 @@ public class Main {
         System.out.println("Expected Output: 3");
         System.out.println("Actual Output: " + geInt.returnGenericItem());
 
-
         GenericExercise<String> geString = new GenericExercise<>();
         System.out.println("\n\nDatatype String...");
-        System.out.println("Setting value 'Revature' to variable 'data'.");
-        geString.loadGenericItem("Revature");
+        System.out.println("Setting value 'Hello' to variable 'data'.");
+        geString.loadGenericItem("Hello");
 
         System.out.println("calling 'returnGenericItem' method.");
-        System.out.println("Expected Output: 'Revature'");
+        System.out.println("Expected Output: 'Hello'");
         System.out.println("Actual Output: " + geString.returnGenericItem());
 
-
-        
     }
 }

@@ -1,4 +1,5 @@
 # Background
+
 SQL sublanguage: DQL (Data Query Language)
 
 When we query a database for information, that information is not necessarily ordered. Physically,
@@ -7,6 +8,7 @@ order is subject to change. When querying for information we usually want to ind
 This is done with the ORDER BY clause.
 
 Example:
+
 ```sql
 SELECT * FROM table_name ORDER BY column1 [, column2, column3, etc...] [ASC|DESC]
 ```
@@ -18,21 +20,24 @@ order places lesser values before greater values. Descending order is the opposi
 
 For example, one might add the `ORDER BY` clause after the `WHERE` clause of a query to order employees from highest to
 lowest salary:
+
 ```sql
 SELECT * FROM employee_table WHERE current = true ORDER BY salary DESC
 ```
-- - - 
+
+---
 
 # Lab
 
 ## Problem 1
+
 character table
-| id |  first_name  |  last_name  |
+| id | first_name | last_name |
 |----|--------------|-------------|
-|1   |'Leto'        |'Atreides'   |
-|2   |'Vladimir'    |'Harkonnen'  |
-|3   |'Jessica'     |'Atreides'   |
-|4   |'Paul'        |'Atreides'   |
-|5   |'Feyd-Rautha' |'Harkonnen'  |
+|1 |'Leto' |'Atreides' |
+|2 |'Vladimir' |'Harkonnen' |
+|3 |'Jessica' |'Atreides' |
+|4 |'Paul' |'Atreides' |
+|5 |'Feyd-Rautha' |'Harkonnen' |
 
 #### Problem 1: Write a statement below to query the database for all characters. Make sure the results are in ascending order by last name, and first name as a tie-breaker.

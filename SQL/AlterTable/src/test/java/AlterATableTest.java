@@ -12,9 +12,8 @@ import java.sql.SQLException;
 public class AlterATableTest {
     AlterATable alterATable = new AlterATable();
 
-
     @Test
-    public void problem1Test(){
+    public void problem1Test() {
         alterATable.problem1();
 
         try {
@@ -31,16 +30,18 @@ public class AlterATableTest {
             Assert.fail();
         }
     }
+
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         try {
 
             Connection connection = ConnectionUtil.getConnection();
 
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE site_user (id SERIAL PRIMARY KEY, firstname varchar(100));";
             String sql2 = "INSERT INTO site_user (firstname) VALUES ('Kevin');";
             String sql3 = "INSERT INTO site_user (firstname) VALUES ('Brian');";
@@ -55,10 +56,11 @@ public class AlterATableTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void cleanup(){
+    public void cleanup() {
 
         try {
 

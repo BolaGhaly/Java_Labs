@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import Lab.Application;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest(classes = Application.class)
 public class ApplicationContextTest {
     @Autowired

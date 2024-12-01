@@ -15,24 +15,27 @@ public class CreateATableTest {
     private CreateATable createATable = new CreateATable();
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void afterEach(){
+    public void afterEach() {
         try {
             Connection connection = ConnectionUtil.getConnection();
             String sql = "DROP TABLE song;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
-        } catch (SQLException e) {}
-    }   
+        } catch (SQLException e) {
+        }
+    }
 
     /**
-     * To test that the table exists, we are attempting to insert a row into the table and if table does not exist,
+     * To test that the table exists, we are attempting to insert a row into the
+     * table and if table does not exist,
      * the test will fail.
      */
     @Test
-    public void problem1Test(){
+    public void problem1Test() {
         try {
             createATable.problem1();
             Connection connection = ConnectionUtil.getConnection();

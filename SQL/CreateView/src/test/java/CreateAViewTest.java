@@ -17,7 +17,7 @@ public class CreateAViewTest {
     CreateAView createAView = new CreateAView();
 
     @Test
-    public void problemTest(){
+    public void problemTest() {
         createAView.problem1();
 
         List<User> expectedResult = new ArrayList<>();
@@ -32,7 +32,7 @@ public class CreateAViewTest {
 
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 actualResult.add(new User(rs.getString(1), rs.getString(2)));
             }
 
@@ -42,7 +42,7 @@ public class CreateAViewTest {
 
             rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 expectedResult.add(new User(rs.getString(1), rs.getString(2)));
             }
 
@@ -51,19 +51,20 @@ public class CreateAViewTest {
             Assert.fail();
         }
 
-        Assert.assertEquals(expectedResult,actualResult);
+        Assert.assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * The @Before annotation runs before every test so that way we create the tables required prior to running the test
+     * The @Before annotation runs before every test so that way we create the
+     * tables required prior to running the test
      */
     @Before
-    public void beforeEach(){
+    public void beforeEach() {
         try {
 
             Connection connection = ConnectionUtil.getConnection();
 
-            //Write SQL logic here
+            // Write SQL logic here
             String sql1 = "CREATE TABLE site_user (id SERIAL PRIMARY KEY, firstname varchar(100), lastname varchar(100), age int);";
             String sql2 = "INSERT INTO site_user (firstname, lastname, age) VALUES ('Steve', 'Garcia', 23);";
             String sql3 = "INSERT INTO site_user (firstname, lastname, age) VALUES ('Alexa', 'Smith', 40);";
@@ -80,10 +81,11 @@ public class CreateAViewTest {
     }
 
     /**
-     * The @After annotation runs after every test so that way we drop the tables to avoid conflicts in future tests
+     * The @After annotation runs after every test so that way we drop the tables to
+     * avoid conflicts in future tests
      */
     @After
-    public void afterEach(){
+    public void afterEach() {
 
         try {
 

@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class LargestSumTest {
     LargestSum ls = new LargestSum();
 
@@ -13,7 +12,7 @@ public class LargestSumTest {
      * Given the list {0, 1, 2, 3, 4}, the largest sum is 7 (3+4).
      */
     @Test
-    public void sumTest1(){
+    public void sumTest1() {
         List<Integer> nums = new ArrayList<>();
         nums.add(0);
         nums.add(1);
@@ -23,11 +22,12 @@ public class LargestSumTest {
         int target = 7;
         Assert.assertEquals(target, ls.bigSum(nums));
     }
+
     /**
      * Given the list {0, 0, 0, 0, 0}, the largest sum is 0 (0+0).
      */
     @Test
-    public void sumTest2(){
+    public void sumTest2() {
         List<Integer> nums = new ArrayList<>();
         nums.add(0);
         nums.add(0);
@@ -37,11 +37,12 @@ public class LargestSumTest {
         int target = 0;
         Assert.assertEquals(target, ls.bigSum(nums));
     }
+
     /**
      * Given the list {0, 4, 2, 5, 0}, the largest sum is 9 (4+5).
      */
     @Test
-    public void sumTest3(){
+    public void sumTest3() {
         List<Integer> nums = new ArrayList<>();
         nums.add(0);
         nums.add(4);
@@ -51,11 +52,12 @@ public class LargestSumTest {
         int target = 9;
         Assert.assertEquals(target, ls.bigSum(nums));
     }
+
     /**
      * Given the list {5, 4, 2, 5, 0}, the largest sum is 10 (5+5).
      */
     @Test
-    public void sumTest4(){
+    public void sumTest4() {
         List<Integer> nums = new ArrayList<>();
         nums.add(5);
         nums.add(4);

@@ -11,9 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * In this class, you will complete the code necessary to retrieve and manipulate entities related to the Student
- * entity. You can check out the ClassroomService to see how this is done for another entity. You should also review
- * the Classroom and Student classes themselves, as these two classes are related to each other in different ways
+ * In this class, you will complete the code necessary to retrieve and
+ * manipulate entities related to the Student
+ * entity. You can check out the ClassroomService to see how this is done for
+ * another entity. You should also review
+ * the Classroom and Student classes themselves, as these two classes are
+ * related to each other in different ways
  * (a list in a one to many against a single object in a many to one.)
  */
 @Service
@@ -22,43 +25,50 @@ public class StudentService {
     ClassroomRepository classroomRepository;
 
     /**
-     * The StudentRepository has been autowired into this class via constructor injection. In case you would like
-     * to use or experiment with the ClassroomRepository as well, that bean will also be injected, however, using the
+     * The StudentRepository has been autowired into this class via constructor
+     * injection. In case you would like
+     * to use or experiment with the ClassroomRepository as well, that bean will
+     * also be injected, however, using the
      * ClassroomRepository is not required.
+     * 
      * @param studentRepository
      * @param classroomRepository
      */
     @Autowired
-    public StudentService(StudentRepository studentRepository, ClassroomRepository classroomRepository){
+    public StudentService(StudentRepository studentRepository, ClassroomRepository classroomRepository) {
         this.studentRepository = studentRepository;
         this.classroomRepository = classroomRepository;
     }
 
     /**
      * Persist a new student entity.
+     * 
      * @param student a transient student entity.
      * @return the persisted student entity.
      */
-    public Student addStudent(Student student){
+    public Student addStudent(Student student) {
         return studentRepository.save(student);
     }
 
     /**
      * @return all student entities.
      */
-    public List<Student> getAllStudent(){
+    public List<Student> getAllStudent() {
         return studentRepository.findAll();
     }
 
     /**
-     * TODO: Provided the Id of an already existing student entity, as well as an existing classroom entity,
-     * assign the classroom to the student by manipulating the classroom field of the student. Don't forget to save
-     * the changes made to your student entity via the studentRepository so that the update is sent to the database.
+     * TODO: Provided the Id of an already existing student entity, as well as an
+     * existing classroom entity,
+     * assign the classroom to the student by manipulating the classroom field of
+     * the student. Don't forget to save
+     * the changes made to your student entity via the studentRepository so that the
+     * update is sent to the database.
      *
      * @param studentId the id of a persisted student
      * @param classroom a persisted, existing classroom passed into this method
      */
-    public void assignClassroomToStudent(long studentId, Classroom classroom){
+    public void assignClassroomToStudent(long studentId, Classroom classroom) {
         Optional<Student> student = studentRepository.findById(studentId);
         if (student.isPresent()) {
             student.get().setClassroom(classroom);
@@ -67,13 +77,16 @@ public class StudentService {
     }
 
     /**
-     * TODO: Provided the Id of an already existing student entity, return its assigned classroom by retrieving
-     * the 'classroom' field of student. Don't forget to save the changes made to your student entity via the
+     * TODO: Provided the Id of an already existing student entity, return its
+     * assigned classroom by retrieving
+     * the 'classroom' field of student. Don't forget to save the changes made to
+     * your student entity via the
      * studentRepository so that the update is sent to the database.
+     * 
      * @param studentId Id of a persisted, existing student entity
      * @return the Classroom of the student
      */
-    public Classroom getClassroomOfStudent(long studentId){
+    public Classroom getClassroomOfStudent(long studentId) {
         Optional<Student> student = studentRepository.findById(studentId);
         if (student.isPresent()) {
             return student.get().getClassroom();
@@ -82,12 +95,15 @@ public class StudentService {
     }
 
     /**
-     * TODO: Provided the Id of an already existing student entity, unassign its classroom by setting the student
-     * entity's classroom field to null. Don't forget to save the changes made to your student entity via the
+     * TODO: Provided the Id of an already existing student entity, unassign its
+     * classroom by setting the student
+     * entity's classroom field to null. Don't forget to save the changes made to
+     * your student entity via the
      * studentRepository so that the update is sent to the database.
+     * 
      * @param studentId Id of a persisted, existing student entity
      */
-    public void unassignClassroomOfStudent(long studentId){
+    public void unassignClassroomOfStudent(long studentId) {
         Optional<Student> student = studentRepository.findById(studentId);
         if (student.isPresent()) {
             student.get().setClassroom(null);

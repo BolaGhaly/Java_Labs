@@ -21,21 +21,24 @@ import java.sql.Statement;
 public class InsertARecord {
 
     /*
-     * Activity: Assuming the table "song" already exists, write the sql statement in the problem1.sql file that allows
-     * us to add a new record into the table "song". It should work with any values for title and artist!
+     * Activity: Assuming the table "song" already exists, write the sql statement
+     * in the problem1.sql file that allows
+     * us to add a new record into the table "song". It should work with any values
+     * for title and artist!
      *
-     *          song Table Diagram:
-     *          |      title        |        artist         |
-     *          ---------------------------------------------
-     *          |'Let it be'        |'Beatles'              |
-     *          |'Hotel California' |'Eagles'               |
-     *          |'Kashmir'          |'Led Zeppelin'         |
+     * song Table Diagram:
+     * | title | artist |
+     * ---------------------------------------------
+     * |'Let it be' |'Beatles' |
+     * |'Hotel California' |'Eagles' |
+     * |'Kashmir' |'Led Zeppelin' |
      *
-     * Do not change anything in this code. You should write your sql statement on a single line in the
+     * Do not change anything in this code. You should write your sql statement on a
+     * single line in the
      * problem1.sql file.
      */
-    public boolean problem1(){
-//        write your SQL logic in a single line in the problem1.sql file.
+    public boolean problem1() {
+        // write your SQL logic in a single line in the problem1.sql file.
         String sql = FileUtil.parseSQLFile("problem1.sql");
         try {
             Connection connection = ConnectionUtil.getConnection();

@@ -13,14 +13,15 @@ import java.util.List;
 
 public class EntityTest {
     /**
-     * This test will pass when the Album entity has the proper relationship with the Artist entity.
+     * This test will pass when the Album entity has the proper relationship with
+     * the Artist entity.
      */
     @Test
     public void ManyToOneRelationshipTest() {
         Class<Album> albumClass = Album.class;
         Field[] fields = albumClass.getDeclaredFields();
         boolean annotationFound = false;
-        for(Field f : fields) {
+        for (Field f : fields) {
             if (f.getName().equals("artist") && f.getType().equals(Artist.class)) {
                 Annotation[] annotations = f.getAnnotations();
                 for (Annotation a : annotations) {
@@ -35,14 +36,15 @@ public class EntityTest {
     }
 
     /**
-     * This test will pass when the Album entity has the proper relationship with the Song entity.
+     * This test will pass when the Album entity has the proper relationship with
+     * the Song entity.
      */
     @Test
     public void OneToManyRelationshipTest() {
         Class<Album> albumClass = Album.class;
         Field[] fields = albumClass.getDeclaredFields();
         boolean annotationFound = false;
-        for(Field f : fields) {
+        for (Field f : fields) {
             if (f.getName().equals("songs") && f.getType().equals(List.class)) {
                 Annotation[] annotations = f.getAnnotations();
                 for (Annotation a : annotations) {

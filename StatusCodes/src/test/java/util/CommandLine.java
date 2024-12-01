@@ -4,9 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 public class CommandLine {
-    public static String executeCommandPrompt(String command){
+    public static String executeCommandPrompt(String command) {
         ProcessBuilder processBuilder = new ProcessBuilder();
         StringBuilder output = new StringBuilder();
 
@@ -18,7 +17,6 @@ public class CommandLine {
                 processBuilder.command("cmd.exe", "/c", command);
                 break;
         }
-
 
         try {
 
@@ -32,12 +30,9 @@ public class CommandLine {
                 output.append(line);
             }
 
-            
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return output.toString();
     }

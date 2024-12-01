@@ -70,7 +70,7 @@ public class AggregateFunctionsTest {
             PreparedStatement insertDataStatement = conn.prepareStatement(insertData);
             insertDataStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -83,7 +83,7 @@ public class AggregateFunctionsTest {
             PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
             createTableStatement.executeUpdate();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
