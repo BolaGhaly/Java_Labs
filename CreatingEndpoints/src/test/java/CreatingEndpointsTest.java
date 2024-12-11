@@ -3,11 +3,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.javalin.Javalin;
 import util.CommandLine;
 
-import io.javalin.Javalin;
-
-public class AppTest {
+public class CreatingEndpointsTest {
     Javalin app = JavalinSingleton.getInstance();
 
     /**
