@@ -17,7 +17,7 @@ public class ConnectionUtil {
 
     // url will represent our connection string. Since this is an in-memory db, we
     // will represent a file location to store the data
-    private static String url = "jdbc:h2:./h2/db";
+    private static String url = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
     private static String username = "sa";
     private static String password = "sa";
 
