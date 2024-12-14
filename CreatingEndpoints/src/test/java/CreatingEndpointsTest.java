@@ -1,54 +1,43 @@
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import io.javalin.Javalin;
-import util.CommandLine;
 
 public class CreatingEndpointsTest {
     Javalin app = JavalinSingleton.getInstance();
+    HttpClient webClient;
 
-    /**
-     * Starts the server on port 9001, and pauses thread for 3 seconds to let it
-     * spin up.
-     * we use port 9001 so that the test and application can both run simultaneously
-     * (they could not be able to run on the same port)
-     * 
-     * @throws InterruptedException
-     */
     @Before
     public void beforeEach() throws InterruptedException {
+        webClient = HttpClient.newHttpClient();
         app.start(9001);
-        // wait 3 seconds so the server starts up
-        Thread.sleep(3000);
     }
 
-    /**
-     * Stops the server.
-     */
     @After
     public void afterEach() {
         app.stop();
     }
 
-    /**
-     * This test will use curl to send a GET request to the Javalin server looking
-     * for the "Hello, World" response.
-     * Curl is a command that can be used in the terminal to send HTTP requests.
-     * we use port 9001 so that the test and application can both run simultaneously
-     * (they could not be able to run on the same port)
-     */
     @Test
-    public void shouldAnswerWithTrue() {
+    public void shouldAnswerWithTrue() throws IOException, InterruptedException {
         String expectedResult = "Hello World";
 
-        String actualResult = CommandLine.executeCommandPrompt("curl http://localhost:9001/hello");
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:9001/hello"))
+                .GET()
+                .build();
 
-        if (actualResult.isEmpty()) {
-            Assert.fail("No response from server");
-        }
-
-        Assert.assertEquals(expectedResult, actualResult);
+        HttpResponse<String> response = webClient.send(request, HttpResponse.BodyHandlers.ofString());
+        Assert.assertFalse("Response body must not be empty", response.body().isEmpty());
+        Assert.assertEquals("Response body should match 'Hello World'", expectedResult, response.body());
     }
 }
