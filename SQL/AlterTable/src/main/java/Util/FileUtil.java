@@ -19,7 +19,7 @@ public class FileUtil {
             while (sc.hasNextLine()) {
                 sql.append(sc.nextLine() + " ");
             }
-            sc.close(); lo ses the scanner
+            sc.close();
         } catch (IOException e) {
         }
 
