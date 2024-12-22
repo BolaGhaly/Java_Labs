@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.bolaghaly</groupId>
+    <artifactId>Java_Labs</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+    <modules>
+        <module>CreatingEndpoints</module>
+        <module>Fibonacci</module>
+        <module>FlightTracker</module>
+        <module>Generic</module>
+        <module>GroceryList</module>
+        <module>InsertPosition</module>
+        <module>Interfaces</module>
+        <module>Isogram</module>
+        <module>IsSorted</module>
+        <module>LargestSum</module>
+        <module>Library</module>
+        <module>Lists</module>
+        <module>Map</module>
+        <module>MostCommonCharacter</module>
+        <module>PathParameters</module>
+        <module>Queue</module>
+        <module>RequestBody</module>
+        <module>ReverseAString</module>
+        <module>Sets</module>
+        <module>Stack</module>
+        <module>StatusCodes</module>
+        <module>StringIsPalindrome</module>
+        <module>SubArray</module>
+        <module>WordCountMap</module>
+        <module>Spring</module>
+        <module>SQL</module>
+    </modules>
+</project>
+
