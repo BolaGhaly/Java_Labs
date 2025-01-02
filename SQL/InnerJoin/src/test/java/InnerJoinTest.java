@@ -1,10 +1,11 @@
+
 import Util.ConnectionUtil;
-import kotlin.Pair;
 import org.junit.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,15 +15,14 @@ public class InnerJoinTest {
 
     @Test
     public void testActivityInnerJoin1() {
-        Set<Pair<Integer, String>> expected = new HashSet<>();
-        expected.add(new Pair<Integer, String>(2, "Stephen Colbert"));
-        expected.add(new Pair<Integer, String>(3, "Samantha Bee"));
-        expected.add(new Pair<Integer, String>(5, "Robert Riggle"));
+        Set<AbstractMap.SimpleEntry<Integer, String>> expected = new HashSet<>();
+        expected.add(new AbstractMap.SimpleEntry<>(2, "Stephen Colbert"));
+        expected.add(new AbstractMap.SimpleEntry<>(3, "Samantha Bee"));
+        expected.add(new AbstractMap.SimpleEntry<>(5, "Robert Riggle"));
 
-        Set<Pair<Integer, String>> result = innerJoinActivity.problem1();
+        Set<AbstractMap.SimpleEntry<Integer, String>> result = innerJoinActivity.problem1();
 
         Assert.assertEquals(expected, result);
-
     }
 
     @BeforeClass
@@ -33,37 +33,37 @@ public class InnerJoinTest {
     @Before
     public void beforeEach() {
         try {
-            String facultyTable = "CREATE TABLE class (" +
-                    "id SERIAL PRIMARY KEY," +
-                    "teacher_name VARCHAR(255)," +
-                    "class_title VARCHAR(255)" +
-                    ");";
+            String facultyTable = "CREATE TABLE class ("
+                    + "id SERIAL PRIMARY KEY,"
+                    + "teacher_name VARCHAR(255),"
+                    + "class_title VARCHAR(255)"
+                    + ");";
             PreparedStatement facultyTableStatement = conn.prepareStatement(facultyTable);
             facultyTableStatement.executeUpdate();
 
-            String insertFaculty = "INSERT INTO class (teacher_name, class_title) VALUES" +
-                    "('Ms. Lovelace', 'Physics')," +
-                    "('Ms. Lovelace', 'Math')," +
-                    "('Mr. McCarthy', 'Writing')," +
-                    "('Ms. Goodall', 'Biology');";
+            String insertFaculty = "INSERT INTO class (teacher_name, class_title) VALUES"
+                    + "('Ms. Lovelace', 'Physics'),"
+                    + "('Ms. Lovelace', 'Math'),"
+                    + "('Mr. McCarthy', 'Writing'),"
+                    + "('Ms. Goodall', 'Biology');";
             PreparedStatement insertFacultyData = conn.prepareStatement(insertFaculty);
             insertFacultyData.executeUpdate();
 
-            String studentsTable = "CREATE TABLE student (" +
-                    "id SERIAL PRIMARY KEY," +
-                    "student_name VARCHAR(255)," +
-                    "class_title VARCHAR(255)" +
-                    ");";
+            String studentsTable = "CREATE TABLE student ("
+                    + "id SERIAL PRIMARY KEY,"
+                    + "student_name VARCHAR(255),"
+                    + "class_title VARCHAR(255)"
+                    + ");";
             PreparedStatement studentsTableStatement = conn.prepareStatement(studentsTable);
             studentsTableStatement.executeUpdate();
 
-            String insertStudents = "INSERT INTO student (student_name, class_title) VALUES" +
-                    "('John Stewart', 'Writing')," +
-                    "('Stephen Colbert', 'Physics')," +
-                    "('Samantha Bee', 'Math')," +
-                    "('Aasif Mandvi', 'Writing')," +
-                    "('Robert Riggle', 'Physics')," +
-                    "('Jessica Williams', 'Art');";
+            String insertStudents = "INSERT INTO student (student_name, class_title) VALUES"
+                    + "('John Stewart', 'Writing'),"
+                    + "('Stephen Colbert', 'Physics'),"
+                    + "('Samantha Bee', 'Math'),"
+                    + "('Aasif Mandvi', 'Writing'),"
+                    + "('Robert Riggle', 'Physics'),"
+                    + "('Jessica Williams', 'Art');";
             PreparedStatement insertStudentsData = conn.prepareStatement(insertStudents);
             insertStudentsData.executeUpdate();
 
@@ -75,22 +75,22 @@ public class InnerJoinTest {
     @After
     public void afterEach() {
         try {
-            conn = ConnectionUtil.getConnection();
-
             String dropTable = "DROP TABLE IF EXISTS class, student";
-            PreparedStatement createTableStatement = conn.prepareStatement(dropTable);
-            createTableStatement.executeUpdate();
-
+            PreparedStatement dropTableStatement = conn.prepareStatement(dropTable);
+            dropTableStatement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @AfterClass
     public static void afterAll() {
         try {
-            conn.close();
+            if (conn != null) {
+                conn.close();
+            }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 }
