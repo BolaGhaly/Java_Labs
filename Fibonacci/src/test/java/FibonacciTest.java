@@ -37,7 +37,7 @@ public class FibonacciTest {
     @Test
     public void fibTest3() {
         int input = 6;
-        int expected = 9;
+        int expected = 8;
         Assert.assertEquals(fib.fib(input), expected);
     }
 }
