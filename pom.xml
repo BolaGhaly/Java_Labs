@@ -35,8 +35,8 @@
         <module>StringIsPalindrome</module>
         <module>SubArray</module>
         <module>WordCountMap</module>
-        <module>Spring</module>
-        <module>SQL</module>
+        <!-- <module>SQL</module> -->
+        <!-- <module>Spring</module> -->
     </modules>
 </project>
 

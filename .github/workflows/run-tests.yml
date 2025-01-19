@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -28,3 +28,13 @@ jobs:
 
     - name: Run unit tests
       run: mvn clean verify
+
+    - name: Summarize and commit if successful
+      if: success()
+      run: |
+        chmod +x sum_tests.sh
+        test_summary=$(./sum_tests.sh | grep "Total tests run:")
+        git config user.name "${{ secrets.USERNAME }}"
+        git config user.email "${{ secrets.EMAIL }}"
+        git commit --allow-empty -m "$test_summary"
+        git push
