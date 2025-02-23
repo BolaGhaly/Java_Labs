@@ -1,3 +1,4 @@
+import Lab.Application;
 import Lab.Model.Store;
 import Lab.Service.StoreService;
 import Lab.Repository.StoreRepository;
@@ -13,12 +14,17 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * This test suite uses mockito and junit to mock the StoreRepository and test
  * an instance StoreService for each of it's
  * methods to properly invoke exactly what they are intended to do
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 @ExtendWith(MockitoExtension.class)
 public class StoreServiceTestSuite {
     @Mock
