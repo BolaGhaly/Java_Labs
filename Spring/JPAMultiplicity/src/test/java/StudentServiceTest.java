@@ -3,19 +3,19 @@ import Application.Model.Student;
 import Application.Repository.ClassroomRepository;
 import Application.Repository.StudentRepository;
 import Application.Service.StudentService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Assert;
 import org.mockito.Mock;
+import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class StudentServiceTest {
-
-    private StudentService studentService;
 
     @Mock
     private StudentRepository studentRepository;
@@ -23,10 +23,12 @@ public class StudentServiceTest {
     @Mock
     private ClassroomRepository classroomRepository;
 
-    @BeforeEach
+    @InjectMocks
+    private StudentService studentService;
+
+    @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        studentService = new StudentService(studentRepository, classroomRepository);
     }
 
     @Test
@@ -36,7 +38,7 @@ public class StudentServiceTest {
 
         Student result = studentService.addStudent(student);
 
-        assertEquals(student, result);
+        Assert.assertEquals(student, result);
         verify(studentRepository, times(1)).save(student);
     }
 
@@ -44,7 +46,6 @@ public class StudentServiceTest {
     public void testAssignClassroomToStudent() {
         long studentId = 1L;
         Classroom classroom = new Classroom();
-
         Student student = new Student();
         student.setId(studentId);
 
@@ -53,7 +54,7 @@ public class StudentServiceTest {
 
         studentService.assignClassroomToStudent(studentId, classroom);
 
-        assertEquals(classroom, student.getClassroom());
+        Assert.assertEquals(classroom, student.getClassroom());
         verify(studentRepository, times(1)).findById(studentId);
         verify(studentRepository, times(1)).save(student);
     }
@@ -62,7 +63,6 @@ public class StudentServiceTest {
     public void testGetClassroomOfStudent() {
         long studentId = 1L;
         Classroom classroom = new Classroom();
-
         Student student = new Student();
         student.setId(studentId);
         student.setClassroom(classroom);
@@ -71,14 +71,13 @@ public class StudentServiceTest {
 
         Classroom result = studentService.getClassroomOfStudent(studentId);
 
-        assertEquals(classroom, result);
+        Assert.assertEquals(classroom, result);
         verify(studentRepository, times(1)).findById(studentId);
     }
 
     @Test
     public void testUnassignClassroomOfStudent() {
         long studentId = 1L;
-
         Student student = new Student();
         student.setId(studentId);
         student.setClassroom(new Classroom());
@@ -88,7 +87,7 @@ public class StudentServiceTest {
 
         studentService.unassignClassroomOfStudent(studentId);
 
-        assertEquals(null, student.getClassroom());
+        Assert.assertNull(student.getClassroom());
         verify(studentRepository, times(1)).findById(studentId);
         verify(studentRepository, times(1)).save(student);
     }
