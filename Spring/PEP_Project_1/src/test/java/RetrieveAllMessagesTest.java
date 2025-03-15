@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -23,16 +24,17 @@ import Util.ConnectionUtil;
 import io.javalin.Javalin;
 
 public class RetrieveAllMessagesTest {
+
     SocialMediaController socialMediaController;
     HttpClient webClient;
     ObjectMapper objectMapper;
     Javalin app;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
-     * for interacting locally on the web.
-     * 
+     * Before every test, reset the database, restart the Javalin app, and
+     * create a new webClient and ObjectMapper for interacting locally on the
+     * web.
+     *
      * @throws InterruptedException
      */
     @Before
@@ -53,10 +55,9 @@ public class RetrieveAllMessagesTest {
 
     /**
      * Sending an http request to GET localhost:8080/messages
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON represenation of a list of message objects
+     *
+     * Expected Response: Status Code: 200 Response Body: JSON represenation of
+     * a list of message objects
      */
     @Test
     public void getAllMessagesMessagesAvailable() throws IOException, InterruptedException {
@@ -72,16 +73,16 @@ public class RetrieveAllMessagesTest {
         expectedResult.add(new Message(1, 1, "test message 1", 1669947792));
         List<Message> actualResult = objectMapper.readValue(response.body().toString(),
                 new TypeReference<List<Message>>() {
-                });
+        });
         Assert.assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * Sending an http request to GET localhost:8080/messages with no mesages in db
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON represenation of an empty list
+     * Sending an http request to GET localhost:8080/messages with no mesages in
+     * db
+     *
+     * Expected Response: Status Code: 200 Response Body: JSON represenation of
+     * an empty list
      */
     @Test
     public void getAllMessagesNoMessages() throws IOException, InterruptedException {

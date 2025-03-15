@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,16 +18,17 @@ import Util.ConnectionUtil;
 import io.javalin.Javalin;
 
 public class DeleteMessageByMessageIdTest {
+
     SocialMediaController socialMediaController;
     HttpClient webClient;
     ObjectMapper objectMapper;
     Javalin app;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
-     * for interacting locally on the web.
-     * 
+     * Before every test, reset the database, restart the Javalin app, and
+     * create a new webClient and ObjectMapper for interacting locally on the
+     * web.
+     *
      * @throws InterruptedException
      */
     @Before
@@ -46,11 +48,11 @@ public class DeleteMessageByMessageIdTest {
     }
 
     /**
-     * Sending an http request to DELETE localhost:8080/messages/1 (message exists)
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON representation of the message that was deleted
+     * Sending an http request to DELETE localhost:8080/messages/1 (message
+     * exists)
+     *
+     * Expected Response: Status Code: 200 Response Body: JSON representation of
+     * the message that was deleted
      */
     @Test
     public void deleteMessageGivenMessageIdMessageFound() throws IOException, InterruptedException {
@@ -69,12 +71,10 @@ public class DeleteMessageByMessageIdTest {
     }
 
     /**
-     * Sending an http request to DELETE localhost:8080/messages/100 (message does
-     * NOT exists)
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body:
+     * Sending an http request to DELETE localhost:8080/messages/100 (message
+     * does NOT exists)
+     *
+     * Expected Response: Status Code: 200 Response Body:
      */
     @Test
     public void deleteMessageGivenMessageIdMessageNotFound() throws IOException, InterruptedException {

@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,16 +18,17 @@ import Util.ConnectionUtil;
 import io.javalin.Javalin;
 
 public class RetrieveMessageByMessageIdTest {
+
     SocialMediaController socialMediaController;
     HttpClient webClient;
     ObjectMapper objectMapper;
     Javalin app;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
-     * for interacting locally on the web.
-     * 
+     * Before every test, reset the database, restart the Javalin app, and
+     * create a new webClient and ObjectMapper for interacting locally on the
+     * web.
+     *
      * @throws InterruptedException
      */
     @Before
@@ -47,10 +49,9 @@ public class RetrieveMessageByMessageIdTest {
 
     /**
      * Sending an http request to GET localhost:8080/messages/1
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON represenation of a message object
+     *
+     * Expected Response: Status Code: 200 Response Body: JSON represenation of
+     * a message object
      */
     @Test
     public void getMessageGivenMessageIdMessageFound() throws IOException, InterruptedException {
@@ -68,12 +69,10 @@ public class RetrieveMessageByMessageIdTest {
     }
 
     /**
-     * Sending an http request to GET localhost:8080/messages/100 (message id 100
-     * does not exist)
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body:
+     * Sending an http request to GET localhost:8080/messages/100 (message id
+     * 100 does not exist)
+     *
+     * Expected Response: Status Code: 200 Response Body:
      */
     @Test
     public void getMessageGivenMessageIdMessageNotFound() throws IOException, InterruptedException {

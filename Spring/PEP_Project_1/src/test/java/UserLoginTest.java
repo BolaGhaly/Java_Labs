@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -24,10 +25,10 @@ public class UserLoginTest {
     Javalin app;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
-     * for interacting locally on the web.
-     * 
+     * Before every test, reset the database, restart the Javalin app, and
+     * create a new webClient and ObjectMapper for interacting locally on the
+     * web.
+     *
      * @throws InterruptedException
      */
     @Before
@@ -47,20 +48,19 @@ public class UserLoginTest {
     }
 
     /**
-     * Sending an http request to POST localhost:8080/login with valid username and
-     * password
-     * 
-     * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON representation of user object
+     * Sending an http request to POST localhost:8080/login with valid username
+     * and password
+     *
+     * Expected Response: Status Code: 200 Response Body: JSON representation of
+     * user object
      */
     @Test
     public void loginSuccessful() throws IOException, InterruptedException {
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
-                .POST(HttpRequest.BodyPublishers.ofString("{" +
-                        "\"username\": \"testuser1\", " +
-                        "\"password\": \"password\" }"))
+                .POST(HttpRequest.BodyPublishers.ofString("{"
+                        + "\"username\": \"testuser1\", "
+                        + "\"password\": \"password\" }"))
                 .header("Content-Type", "application/json")
                 .build();
         HttpResponse response = webClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
@@ -75,19 +75,18 @@ public class UserLoginTest {
     }
 
     /**
-     * Sending an http request to POST localhost:8080/login with invalid username
-     * 
-     * Expected Response:
-     * Status Code: 401
-     * Response Body:
+     * Sending an http request to POST localhost:8080/login with invalid
+     * username
+     *
+     * Expected Response: Status Code: 401 Response Body:
      */
     @Test
     public void loginInvalidUsername() throws IOException, InterruptedException {
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
-                .POST(HttpRequest.BodyPublishers.ofString("{" +
-                        "\"username\": \"testuser404\", " +
-                        "\"password\": \"password\" }"))
+                .POST(HttpRequest.BodyPublishers.ofString("{"
+                        + "\"username\": \"testuser404\", "
+                        + "\"password\": \"password\" }"))
                 .header("Content-Type", "application/json")
                 .build();
         HttpResponse response = webClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
@@ -99,19 +98,18 @@ public class UserLoginTest {
     }
 
     /**
-     * Sending an http request to POST localhost:8080/login with invalid password
-     * 
-     * Expected Response:
-     * Status Code: 401
-     * Response Body:
+     * Sending an http request to POST localhost:8080/login with invalid
+     * password
+     *
+     * Expected Response: Status Code: 401 Response Body:
      */
     @Test
     public void loginInvalidPassword() throws IOException, InterruptedException {
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
-                .POST(HttpRequest.BodyPublishers.ofString("{" +
-                        "\"username\": \"testuser1\", " +
-                        "\"password\": \"pass123\" }"))
+                .POST(HttpRequest.BodyPublishers.ofString("{"
+                        + "\"username\": \"testuser1\", "
+                        + "\"password\": \"pass123\" }"))
                 .header("Content-Type", "application/json")
                 .build();
         HttpResponse response = webClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
