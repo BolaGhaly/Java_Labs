@@ -16,16 +16,14 @@ import org.springframework.context.ApplicationContext;
 import com.example.entity.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class CreateMessageTest {
-    ApplicationContext app;
+public class CreateMessageTest {	
+	ApplicationContext app;
     HttpClient webClient;
     ObjectMapper objectMapper;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
+     * Before every test, reset the database, restart the Javalin app, and create a new webClient and ObjectMapper
      * for interacting locally on the web.
-     * 
      * @throws InterruptedException
      */
     @BeforeEach
@@ -39,21 +37,21 @@ public class CreateMessageTest {
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-        Thread.sleep(500);
-        SpringApplication.exit(app);
+    	Thread.sleep(500);
+    	SpringApplication.exit(app);
     }
+    
 
     /**
-     * Sending an http request to POST localhost:8080/messages with valid message
-     * credentials
+     * Sending an http request to POST localhost:8080/messages with valid message credentials
      * 
      * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON representation of message object
+     *  Status Code: 200
+     *  Response Body: JSON representation of message object
      */
     @Test
     public void createMessageSuccessful() throws IOException, InterruptedException {
-        String json = "{\"postedBy\":9999,\"messageText\": \"hello message\",\"timePostedEpoch\": 1669947792}";
+    	String json = "{\"postedBy\":9999,\"messageText\": \"hello message\",\"timePostedEpoch\": 1669947792}";
         HttpRequest postMessageRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/messages"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
@@ -65,19 +63,18 @@ public class CreateMessageTest {
         ObjectMapper om = new ObjectMapper();
         Message expectedResult = new Message(1, 9999, "hello message", Long.valueOf(1669947792));
         Message actualResult = om.readValue(response.body().toString(), Message.class);
-        Assertions.assertEquals(expectedResult, actualResult,
-                "Expected=" + expectedResult + ", Actual=" + actualResult);
+        Assertions.assertEquals(expectedResult, actualResult, "Expected="+expectedResult + ", Actual="+actualResult);
     }
-
+    
     /**
      * Sending an http request to POST localhost:8080/messages with empty message
      * 
      * Expected Response:
-     * Status Code: 400
+     *  Status Code: 400
      */
     @Test
     public void createMessageMessageTextBlank() throws IOException, InterruptedException {
-        String json = "{\"postedBy\":9999,\"messageText\": \"\",\"timePostedEpoch\": 1669947792}";
+    	String json = "{\"postedBy\":9999,\"messageText\": \"\",\"timePostedEpoch\": 1669947792}";
         HttpRequest postMessageRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/messages"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
@@ -88,19 +85,19 @@ public class CreateMessageTest {
         Assertions.assertEquals(400, status, "Expected Status Code 400 - Actual Code was: " + status);
     }
 
+
     /**
-     * Sending an http request to POST localhost:8080/messages with message length
-     * greater than 254
+     * Sending an http request to POST localhost:8080/messages with message length greater than 254
      * 
      * Expected Response:
-     * Status Code: 400
-     * Response Body:
+     *  Status Code: 400
+     *  Response Body: 
      */
     @Test
     public void createMessageMessageGreaterThan255() throws IOException, InterruptedException {
-        String json = "{\"postedBy\":9999,"
-                + "\"messageText\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\","
-                + "\"timePostedEpoch\": 1669947792}";
+    	String json = "{\"postedBy\":9999,"
+    			+ "\"messageText\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\","
+    			+ "\"timePostedEpoch\": 1669947792}";
         HttpRequest postMessageRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/messages"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
@@ -112,15 +109,14 @@ public class CreateMessageTest {
     }
 
     /**
-     * Sending an http request to POST localhost:8080/messages with a user id that
-     * doesnt exist in db
+     * Sending an http request to POST localhost:8080/messages with a user id that doesnt exist in db
      * 
      * Expected Response:
-     * Status Code: 400
+     *  Status Code: 400
      */
     @Test
     public void createMessageUserNotInDb() throws IOException, InterruptedException {
-        String json = "{\"postedBy\":5050,\"messageText\": \"hello message\",\"timePostedEpoch\": 1669947792}";
+    	String json = "{\"postedBy\":5050,\"messageText\": \"hello message\",\"timePostedEpoch\": 1669947792}";
         HttpRequest postMessageRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/messages"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))

@@ -1,5 +1,4 @@
 package com.example.controller;
-
 import com.example.service.AccountService;
 import com.example.service.MessageService;
 
@@ -24,8 +23,8 @@ public class SocialMediaController {
 
     @Autowired
     public SocialMediaController(AccountService accountService, MessageService messageService) {
-        this.accountService = accountService;
-        this.messageService = messageService;
+      this.accountService = accountService;
+      this.messageService = messageService;
     }
 
     @GetMapping("/messages")
@@ -55,33 +54,29 @@ public class SocialMediaController {
     @PostMapping("/messages")
     public ResponseEntity<Message> createNewMessage(@RequestBody Message message) {
         Message createdMessage = messageService.createNewMessage(message);
-        if (createdMessage == null)
-            return ResponseEntity.status(400).body(null);
+        if (createdMessage == null) return ResponseEntity.status(400).body(null);
         return ResponseEntity.status(200).header("content-type", "application/json").body(createdMessage);
     }
 
+
     @PatchMapping("/messages/{messageId}")
-    public ResponseEntity<Integer> updateExistingMessageById(@PathVariable Integer messageId,
-            @RequestBody Message message) {
+    public ResponseEntity<Integer> updateExistingMessageById(@PathVariable Integer messageId, @RequestBody Message message) {
         Integer updatedMessage = messageService.updateExistingMessageById(messageId, message.getMessageText());
-        if (updatedMessage == null)
-            return ResponseEntity.status(400).body(null);
+        if (updatedMessage == null) return ResponseEntity.status(400).body(null);
         return ResponseEntity.status(200).header("content-type", "application/json").body(updatedMessage);
     }
 
     @PostMapping("/register")
     public ResponseEntity<Account> createNewAccount(@RequestBody Account account) {
         Account newAccountCreated = accountService.createNewUserAccount(account);
-        if (newAccountCreated == null)
-            return ResponseEntity.status(409).body(null);
+        if (newAccountCreated == null) return ResponseEntity.status(409).body(null);
         return ResponseEntity.status(200).header("content-type", "application/json").body(newAccountCreated);
     }
 
     @PostMapping("/login")
     public ResponseEntity<Account> userLogin(@RequestBody Account account) {
         Account userLoggedIn = accountService.userLogin(account);
-        if (userLoggedIn == null)
-            return ResponseEntity.status(401).body(null);
+        if (userLoggedIn == null) return ResponseEntity.status(401).body(null);
         return ResponseEntity.status(200).header("content-type", "application/json").body(userLoggedIn);
     }
 }

@@ -12,35 +12,31 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository){
         this.accountRepository = accountRepository;
     }
 
     public Account createNewUserAccount(Account account) {
-        if (account.getUsername().length() == 0)
-            return null;
-        if (account.getPassword().length() < 4)
-            return null;
+        if (account.getUsername().length() == 0) return null;
+        if (account.getPassword().length() < 4) return null;
 
         List<Account> allAccounts = accountRepository.findAll();
         for (Account acc : allAccounts) {
-            if (acc.getUsername().compareTo(account.getUsername()) == 0)
-                return null;
+            if (acc.getUsername().compareTo(account.getUsername()) == 0) return null;
         }
 
         return accountRepository.save(account);
     }
 
-    public Account userLogin(Account account) {
+    public Account userLogin (Account account) {
         List<Account> allAccounts = accountRepository.findAll();
 
         for (Account acc : allAccounts) {
             boolean areUsernamesEqual = acc.getUsername().compareTo(account.getUsername()) == 0;
             boolean arePasswordsEqual = acc.getPassword().compareTo(account.getPassword()) == 0;
-            if (areUsernamesEqual && arePasswordsEqual)
-                return acc;
+            if (areUsernamesEqual && arePasswordsEqual) return acc;
         }
-
+        
         return null;
     }
 }

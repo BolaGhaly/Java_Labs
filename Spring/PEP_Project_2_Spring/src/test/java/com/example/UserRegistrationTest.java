@@ -17,15 +17,13 @@ import org.springframework.context.ApplicationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class UserRegistrationTest {
-    ApplicationContext app;
+	ApplicationContext app;
     HttpClient webClient;
     ObjectMapper objectMapper;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
+     * Before every test, reset the database, restart the Javalin app, and create a new webClient and ObjectMapper
      * for interacting locally on the web.
-     * 
      * @throws InterruptedException
      */
     @BeforeEach
@@ -39,22 +37,21 @@ public class UserRegistrationTest {
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-        Thread.sleep(500);
-        SpringApplication.exit(app);
+    	Thread.sleep(500);
+    	SpringApplication.exit(app);
     }
-
+    
     /**
-     * Sending an http request to POST localhost:8080/register when username does
-     * not exist in the system
+     * Sending an http request to POST localhost:8080/register when username does not exist in the system
      * 
      * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON representation of user object
+     *  Status Code: 200
+     *  Response Body: JSON representation of user object
      */
     @Test
     public void registerUserSuccessful() throws IOException, InterruptedException {
         String json = "{\"username\":\"user\",\"password\":\"password\"}";
-        HttpRequest postRequest = HttpRequest.newBuilder()
+    	HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/register"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .header("Content-Type", "application/json")
@@ -64,17 +61,17 @@ public class UserRegistrationTest {
         Assertions.assertEquals(200, status, "Expected Status Code 200- Actual Code was: " + status);
     }
 
-    /**
-     * Sending an http request to POST localhost:8080/register when username already
-     * exists in system
+
+     /**
+     * Sending an http request to POST localhost:8080/register when username already exists in system
      * 
      * Expected Response:
-     * Status Code: 409
+     *  Status Code: 409
      */
     @Test
     public void registerUserDuplicateUsername() throws IOException, InterruptedException {
-        String json = "{\"username\":\"user\",\"password\":\"password\"}";
-        HttpRequest postRequest = HttpRequest.newBuilder()
+    	String json = "{\"username\":\"user\",\"password\":\"password\"}";
+    	HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/register"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .header("Content-Type", "application/json")

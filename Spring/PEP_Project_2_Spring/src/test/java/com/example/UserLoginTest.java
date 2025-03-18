@@ -18,15 +18,13 @@ import com.example.entity.Account;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class UserLoginTest {
-    ApplicationContext app;
+	ApplicationContext app;
     HttpClient webClient;
     ObjectMapper objectMapper;
 
     /**
-     * Before every test, reset the database, restart the Javalin app, and create a
-     * new webClient and ObjectMapper
+     * Before every test, reset the database, restart the Javalin app, and create a new webClient and ObjectMapper
      * for interacting locally on the web.
-     * 
      * @throws InterruptedException
      */
     @BeforeEach
@@ -40,21 +38,20 @@ public class UserLoginTest {
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-        Thread.sleep(500);
-        SpringApplication.exit(app);
+    	Thread.sleep(500);
+    	SpringApplication.exit(app);
     }
-
+    
     /**
-     * Sending an http request to POST localhost:8080/login with valid username and
-     * password
+     * Sending an http request to POST localhost:8080/login with valid username and password
      * 
      * Expected Response:
-     * Status Code: 200
-     * Response Body: JSON representation of user object
+     *  Status Code: 200
+     *  Response Body: JSON representation of user object
      */
     @Test
     public void loginSuccessful() throws IOException, InterruptedException {
-        String json = "{\"accountId\":0,\"username\":\"testuser1\",\"password\":\"password\"}";
+    	String json = "{\"accountId\":0,\"username\":\"testuser1\",\"password\":\"password\"}";
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
@@ -66,18 +63,18 @@ public class UserLoginTest {
         ObjectMapper om = new ObjectMapper();
         Account expectedResult = new Account(9999, "testuser1", "password");
         Account actualResult = om.readValue(response.body().toString(), Account.class);
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertEquals(expectedResult, actualResult);        
     }
 
     /**
      * Sending an http request to POST localhost:8080/login with invalid username
      * 
      * Expected Response:
-     * Status Code: 401
+     * 	Status Code: 401 
      */
     @Test
     public void loginInvalidUsername() throws IOException, InterruptedException {
-        String json = "{\"accountId\":9999,\"username\":\"testuser404\",\"password\":\"password\"}";
+    	String json = "{\"accountId\":9999,\"username\":\"testuser404\",\"password\":\"password\"}";
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
@@ -87,16 +84,17 @@ public class UserLoginTest {
         int status = response.statusCode();
         Assertions.assertEquals(401, status, "Expected Status Code 401 - Actual Code was: " + status);
     }
+    
 
     /**
      * Sending an http request to POST localhost:8080/login with invalid password
      * 
      * Expected Response:
-     * Status Code: 401
+     * 	Status Code: 401
      */
     @Test
     public void loginInvalidPassword() throws IOException, InterruptedException {
-        String json = "{\"accountId\":9999,\"username\":\"testuser1\",\"password\":\"pass404\"}";
+    	String json = "{\"accountId\":9999,\"username\":\"testuser1\",\"password\":\"pass404\"}";
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/login"))
                 .POST(HttpRequest.BodyPublishers.ofString(json))
