@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 /**
- * Check out the PetRepository class in the Repository package for the code you
- * should modify.
+ * Check out the PetRepository class in the Repository package for the code you should modify.
  * This main method is just for manually testing your code.
  */
 @SpringBootApplication
@@ -38,6 +37,5 @@ public class App {
         System.out.println("Next, let's retrieve the average age of all pets. (If you haven't written the query yet," +
                 "\n this will throw an exception.)");
         System.out.println(petRepository.lab3());
-
     }
 }
