@@ -1,11 +1,12 @@
 package Lab.Controller;
 
-import Lab.Model.Sample;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import Lab.Model.Sample;
 
 /**
  * You're most likely going to need to have greater control over the exact
@@ -47,8 +48,8 @@ public class Controller {
      * that says "Bad Request!"
      */
     @GetMapping("/lab1")
-    public ResponseEntity lab1() {
-        return null;
+    public ResponseEntity<String> lab1() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request");
     }
 
     /**
@@ -59,7 +60,9 @@ public class Controller {
      * body.
      */
     @GetMapping("/lab2")
-    public ResponseEntity lab2(@RequestBody Sample sample) {
-        return null;
+    public ResponseEntity<Sample> lab2(@RequestBody Sample sample) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("content-length", "100")
+                .body(sample);
     }
 }
