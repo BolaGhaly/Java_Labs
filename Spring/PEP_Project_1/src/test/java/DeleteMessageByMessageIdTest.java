@@ -39,7 +39,6 @@ public class DeleteMessageByMessageIdTest {
         webClient = HttpClient.newHttpClient();
         objectMapper = new ObjectMapper();
         app.start(8080);
-        Thread.sleep(1000);
     }
 
     @After

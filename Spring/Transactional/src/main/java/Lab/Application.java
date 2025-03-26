@@ -29,7 +29,6 @@ public class Application {
 		ContainerService containerService = applicationContext.getBean(ContainerService.class);
 		ShipService shipService = applicationContext.getBean(ShipService.class);
 		// this is to allow spring to fully set up prior to producing output
-		Thread.sleep(500);
 		System.out.println("First, let's show off the working functionality of transactions & rollbacks for containers.");
 		System.out.println("Adding a valid set of containers and then retrieving them: ");
 		List<Container> validContainers = new ArrayList<>();

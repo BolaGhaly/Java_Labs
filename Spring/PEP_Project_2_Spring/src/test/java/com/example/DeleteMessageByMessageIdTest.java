@@ -31,15 +31,13 @@ public class DeleteMessageByMessageIdTest {
         objectMapper = new ObjectMapper();
         String[] args = new String[] {};
         app = SpringApplication.run(SocialMediaApp.class, args);
-        Thread.sleep(500);
     }
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-    	Thread.sleep(500);
     	SpringApplication.exit(app);
     }
-    
+
     /**
      * Sending an http request to DELETE localhost:8080/messages/1 (message exists)
      * 

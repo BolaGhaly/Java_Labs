@@ -1,14 +1,13 @@
 package Application;
 
-import Application.Model.Book;
-import Application.Repository.BookRepository;
+import java.sql.Timestamp;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.lang.reflect.Method;
-import java.sql.Timestamp;
-import java.util.Arrays;
+import Application.Model.Book;
+import Application.Repository.BookRepository;
 
 @SpringBootApplication
 public class App {
@@ -16,7 +15,6 @@ public class App {
         ApplicationContext applicationContext = SpringApplication.run(App.class);
         BookRepository bookRepository = applicationContext.getBean(BookRepository.class);
         // wait for the spring logs to clear before printing output
-        Thread.sleep(500);
         Timestamp time1 = new Timestamp(444444444444L);
         Timestamp time2 = new Timestamp(555555555555L);
         Book b1 = new Book(11111L, "Cosmicomics", "Italo Calvino", true, 200, time1, time1);

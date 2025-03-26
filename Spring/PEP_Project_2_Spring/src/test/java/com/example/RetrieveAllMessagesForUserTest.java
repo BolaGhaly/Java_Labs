@@ -35,15 +35,13 @@ public class RetrieveAllMessagesForUserTest {
         objectMapper = new ObjectMapper();
         String[] args = new String[] {};
         app = SpringApplication.run(SocialMediaApp.class, args);
-        Thread.sleep(500);
     }
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-    	Thread.sleep(500);
     	SpringApplication.exit(app);
     }
-    
+
     /**
      * Sending an http request to GET localhost:8080/accounts/9999/messages (messages exist for user) 
      * 

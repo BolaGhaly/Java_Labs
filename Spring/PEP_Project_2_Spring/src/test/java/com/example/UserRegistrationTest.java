@@ -1,7 +1,6 @@
 package com.example;
 
 import java.io.IOException;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -32,15 +31,13 @@ public class UserRegistrationTest {
         objectMapper = new ObjectMapper();
         String[] args = new String[] {};
         app = SpringApplication.run(SocialMediaApp.class, args);
-        Thread.sleep(500);
     }
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-    	Thread.sleep(500);
     	SpringApplication.exit(app);
     }
-    
+
     /**
      * Sending an http request to POST localhost:8080/register when username does not exist in the system
      * 

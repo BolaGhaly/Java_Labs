@@ -35,15 +35,13 @@ public class RetrieveAllMessagesTest {
         objectMapper = new ObjectMapper();
         String[] args = new String[] {};
         app = SpringApplication.run(SocialMediaApp.class, args);
-        Thread.sleep(500);
     }
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-    	Thread.sleep(500);
     	SpringApplication.exit(app);
     }
-    
+
     @Test
     public void getAllMessagesMessagesAvailable() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
