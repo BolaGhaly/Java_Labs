@@ -5,8 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.annotation.Annotation;
 
-public class ShipServiceTestSuite {
-
+public class ShipServiceTest {
     @Test
     public void testTransactionalAnnotationPresence() {
         Class<ShipService> shipServiceClass = ShipService.class;
@@ -23,5 +22,4 @@ public class ShipServiceTestSuite {
 
         Assertions.assertTrue(annotationPropertyFound);
     }
-
 }
