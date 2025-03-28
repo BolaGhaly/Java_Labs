@@ -1,11 +1,15 @@
 package Application.DAO;
 
-import Application.Model.Flight;
-import Application.Util.ConnectionUtil;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import Application.Model.Flight;
+import Application.Util.ConnectionUtil;
 
 /**
  * A DAO is a class that mediates the transformation of data between the format
@@ -165,12 +169,9 @@ public class FlightDAO {
      */
     public Flight updateFlight(int id, Flight flight) {
         Flight updatedFlight = null;
-        System.out.println("here -");
 
         try {
             Connection connection = ConnectionUtil.getConnection();
-            System.out.println("Before -");
-            System.out.println(getAllFlights());
 
             // Write SQL logic here
             String sql = "UPDATE flight SET departure_city = ?, arrival_city = ? WHERE flight_id = ?";
